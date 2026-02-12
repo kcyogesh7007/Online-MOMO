@@ -5,11 +5,13 @@ require("dotenv").config();
 connectDB();
 
 const authRoute = require("./routes/userRoute");
+const productRoute = require("./routes/productRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("", authRoute);
+app.use("/api", authRoute);
+app.use("/api", productRoute);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
